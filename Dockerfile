@@ -6,4 +6,4 @@ FROM openjdk:17.0.1-jdk-slim
 COPY --from=build /target/ems-backend-0.0.1-SNAPSHOT.war ems-backend.war
 
 EXPOSE 8080
-ENTRYPOINT [ "java","-jar","ems-backend.jar" ]
+ENTRYPOINT [ "java","-jar","ems-backend.war" ]
