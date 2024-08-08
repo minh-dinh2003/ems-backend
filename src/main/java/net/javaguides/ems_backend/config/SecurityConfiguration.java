@@ -34,7 +34,7 @@ public class SecurityConfiguration {
             .cors()
             .and()
             .authorizeHttpRequests()
-            .requestMatchers("/login","https://genuine-analysis-production.up.railway.app/")
+            .requestMatchers("https://genuine-analysis-production.up.railway.app/")
             .permitAll()
             .anyRequest()
             .authenticated()
