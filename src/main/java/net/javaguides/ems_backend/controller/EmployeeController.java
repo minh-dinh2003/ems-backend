@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@CrossOrigin(origins = "https://minh-dinh2003.github.io/ems-frontend/")
+@CrossOrigin(origins = "https://genuine-analysis-production.up.railway.app/")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")

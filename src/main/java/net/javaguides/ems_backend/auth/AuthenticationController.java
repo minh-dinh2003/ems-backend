@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "https://minh-dinh2003.github.io/ems-frontend/")
+@CrossOrigin(origins = "https://genuine-analysis-production.up.railway.app/")
 public class AuthenticationController {
 	private final AuthenticationService service;
 	@PostMapping("/register")
