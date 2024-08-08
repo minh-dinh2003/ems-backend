@@ -28,23 +28,22 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors()
-            .and()
             .csrf()
             .disable()
-            .authorizeRequests()
-            .antMatchers(HttpMethod.POST, SIGN_UP_URL)
-            .permitAll()
-            .anyRequest().authenticated()
+            .cors()
             .and()
-            .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-            .addFilter(new JWTAuthorizationFilter(authenticationManager()))
-               // this disables session creation on Spring Security
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .authorizeHttpRequests()
+            .requestMatchers(HttpMethod.POST,"https://genuine-analysis-production.up.railway.app/")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-            
+        
         return http.build();
     }
 }
