@@ -34,7 +34,7 @@ public class SecurityConfiguration {
             .cors()
             .and()
             .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.POST,"/api/v1/auth/authenticate")
+            .requestMatchers(HttpMethod.POST,"/api/v1/auth/**")
             .permitAll()
             .anyRequest()
             .authenticated()
@@ -46,16 +46,6 @@ public class SecurityConfiguration {
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         
         return http.build();
-    }
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5174", "https://genuine-analysis-production.up.railway.app/"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
     }
 }
 
