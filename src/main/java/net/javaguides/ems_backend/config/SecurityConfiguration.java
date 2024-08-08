@@ -34,7 +34,7 @@ public class SecurityConfiguration {
             .cors()
             .and()
             .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.POST,"/api/v1/auth/**")
+            .requestMatchers("/login","https://genuine-analysis-production.up.railway.app/")
             .permitAll()
             .anyRequest()
             .authenticated()
